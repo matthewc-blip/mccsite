@@ -2,7 +2,7 @@ backend:
   name: github
   repo: matthewc-blip/mccsite
   branch: main
-  base_url: https://mcc-cms-auth.YOUR_SUBDOMAIN.workers.dev
+  base_url: https://mcc-cms-auth.matthewc-785.workers.dev
   auth_endpoint: auth
 
 publish_mode: simple
