@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Loading… | MCC Solutions Blog</title>
+<meta name="robots" content="index, follow">
+<link rel="canonical" id="canonicalLink" href="https://mcc-solutionsnj.com/blog/">
+<meta name="description" id="metaDesc" content="MCC Solutions LLC blog — notary, bookkeeping, and small business insights from Cranford, NJ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap"></noscript>
+<style>
+  :root {
+    --black: #07080a; --navy: #0b0e14; --navy2: #111520; --navy3: #161b28;
+    --gold: #b8973e; --gold-light: #d4b05a; --gold-pale: rgba(184,151,62,0.12);
+    --white: #f0ede6; --white-dim: rgba(240,237,230,0.85);
+    --muted: #9098a8; --muted-lt: #b0b8c8;
+    --border: rgba(255,255,255,0.06); --border-gold: rgba(184,151,62,0.25);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy); color: var(--white);
+    font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased; font-weight: 300;
+  }
+  h1,h2,h3 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.2; font-weight: 400; letter-spacing: 0.01em; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 6%; background: rgba(11,14,20,0.95);
+    backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 1.15rem;
+    color: var(--white); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-back {
+    font-size: 0.72rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color .2s;
+  }
+  .nav-back:hover { color: var(--gold); }
+
+  article { max-width: 700px; margin: 0 auto; padding: 8rem 6% 5rem; }
+  .post-meta {
+    font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.25rem; display: flex; gap: 0.75rem; align-items: center;
+  }
+  .post-meta .dot { color: var(--border-gold); }
+  .post-meta .date { color: var(--muted); text-transform: none; letter-spacing: 0.02em; }
+  article h1 { font-size: clamp(2rem, 5vw, 2.85rem); margin-bottom: 2.5rem; }
+  .post-body { font-size: 1rem; color: var(--white-dim); }
+  .post-body p { margin-bottom: 1.4rem; }
+  .post-body h2 {
+    font-size: 1.5rem; color: var(--white); margin: 2.5rem 0 1rem;
+    padding-top: 0.5rem; border-top: 1px solid var(--border);
+  }
+  .post-body h2:first-child { border-top: none; padding-top: 0; }
+  .post-body ul, .post-body ol { margin: 0 0 1.4rem 1.25rem; color: var(--white-dim); }
+  .post-body li { margin-bottom: 0.5rem; }
+  .post-body strong { color: var(--white); font-weight: 500; }
+  .post-body em { color: var(--gold-light); font-style: italic; }
+  .post-body hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+  .post-body a { color: var(--gold); text-decoration: none; }
+  .post-body a:hover { color: var(--gold-light); }
+
+  .author-bio {
+    margin-top: 3rem; padding: 1.5rem; border: 1px solid var(--border-gold);
+    background: var(--navy2); font-size: 0.85rem; color: var(--muted-lt); line-height: 1.8;
+  }
+  .author-bio a { color: var(--gold); text-decoration: none; }
+
+  .back-link {
+    display: inline-block; margin-top: 3rem; font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-decoration: none;
+  }
+
+  .loading { padding: 8rem 6%; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 6%; text-align: center; background: var(--black); }
+  footer p { font-size: 0.72rem; color: var(--muted); margin: 0; }
+  footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">MCC <span>Solutions</span></a>
+  <a href="/blog/" class="nav-back">&larr; All Posts</a>
+</nav>
+
+<article id="articleRoot">
+  <div class="loading">Loading post&hellip;</div>
+</article>
+
+<footer>
+  <p>&copy; 2026 MCC Solutions LLC &middot; Cranford, NJ &middot; <a href="/">mcc-solutionsnj.com</a></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<script>
+  function getSlug() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('slug');
+  }
+
+  async function loadPost() {
+    const slug = getSlug();
+    const root = document.getElementById('articleRoot');
+    if (!slug) {
+      root.innerHTML = '<div class="loading">Post not found. <a href="/blog/" style="color:var(--gold)">Back to all posts</a></div>';
+      return;
+    }
+    try {
+      const res = await fetch(`/blog/posts/${encodeURIComponent(slug)}.json`, { cache: 'no-store' });
+      if (!res.ok) throw new Error('Post not found');
+      const post = await res.json();
+
+      document.getElementById('pageTitle').textContent = `${post.title} | MCC Solutions Blog`;
+      document.getElementById('metaDesc').setAttribute('content', post.excerpt || '');
+      document.getElementById('canonicalLink').setAttribute('href', `https://mcc-solutionsnj.com/blog/post.html?slug=${slug}`);
+
+      const dateStr = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      const bodyHtml = (typeof marked !== 'undefined') ? marked.parse(post.body || '') : (post.body || '').replace(/\n/g, '<br>');
+
+      root.innerHTML = `
+        <div class="post-meta">
+          <span>${post.category || 'Insights'}</span>
+          <span class="dot">&middot;</span>
+          <span class="date">${dateStr}</span>
+        </div>
+        <h1>${post.title}</h1>
+        <div class="post-body">${bodyHtml}</div>
+        <div class="author-bio">
+          <strong style="color:var(--white);">Matthew Coleman</strong> is the owner of MCC Solutions LLC, a licensed financial services firm in Cranford, NJ offering notary, bookkeeping, and web design services. Learn more at <a href="/">mcc-solutionsnj.com</a>.
+        </div>
+        <a class="back-link" href="/blog/">&larr; Back to All Posts</a>
+      `;
+    } catch (err) {
+      root.innerHTML = '<div class="loading">Post not found. <a href="/blog/" style="color:var(--gold)">Back to all posts</a></div>';
+    }
+  }
+  loadPost();
+</script>
+
+</body>
+</html>

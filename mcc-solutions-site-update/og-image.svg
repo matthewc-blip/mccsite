@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0b0e14"/>
+
+  <!-- Subtle gold gradient top -->
+  <defs>
+    <linearGradient id="topGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#b8973e" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#b8973e" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#b8973e" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="2" y="0" fill="url(#topGlow)"/>
+  <rect width="1200" height="1" y="629" fill="#b8973e" opacity="0.15"/>
+
+  <!-- Left gold accent line -->
+  <rect x="80" y="80" width="1" height="470" fill="#b8973e" opacity="0.2"/>
+
+  <!-- Scales icon -->
+  <g transform="translate(100, 200)">
+    <rect x="44" y="0" width="3" height="200" fill="#b8973e" opacity="0.6"/>
+    <rect x="20" y="200" width="50" height="8" rx="4" fill="#b8973e" opacity="0.4"/>
+    <rect x="0" y="60" width="90" height="5" rx="2.5" fill="#b8973e" opacity="0.6"/>
+    <line x1="15" y1="65" x2="15" y2="105" stroke="#b8973e" stroke-width="2.5" opacity="0.5"/>
+    <line x1="75" y1="65" x2="75" y2="105" stroke="#b8973e" stroke-width="2.5" opacity="0.5"/>
+    <path d="M3 105 Q15 120 27 105" stroke="#b8973e" stroke-width="3" fill="none" opacity="0.6"/>
+    <path d="M63 105 Q75 120 87 105" stroke="#b8973e" stroke-width="3" fill="none" opacity="0.6"/>
+    <circle cx="45" cy="38" r="7" fill="#b8973e" opacity="0.5"/>
+  </g>
+
+  <!-- Main text -->
+  <text x="240" y="220" font-family="Georgia, serif" font-size="72" font-weight="400" fill="#f0ede6" letter-spacing="2">MCC Solutions</text>
+  <text x="242" y="272" font-family="Georgia, serif" font-size="28" font-weight="300" fill="#b8973e" letter-spacing="8">LLC</text>
+
+  <!-- Divider -->
+  <rect x="240" y="300" width="680" height="1" fill="#b8973e" opacity="0.25"/>
+
+  <!-- Tagline -->
+  <text x="240" y="350" font-family="Arial, sans-serif" font-size="22" font-weight="300" fill="#888d9a" letter-spacing="1">Mobile Notary  ·  Bookkeeping  ·  Web Design</text>
+
+  <!-- Location -->
+  <text x="240" y="400" font-family="Arial, sans-serif" font-size="18" font-weight="300" fill="#6b707d" letter-spacing="2">Cranford, NJ  ·  Union County &amp; Surrounding Areas</text>
+
+  <!-- Credential pills -->
+  <g transform="translate(240, 440)">
+    <!-- NNA Certified -->
+    <rect x="0" y="0" width="160" height="34" rx="0" fill="none" stroke="#b8973e" stroke-width="1" opacity="0.4"/>
+    <text x="80" y="22" font-family="Arial, sans-serif" font-size="13" fill="#888d9a" text-anchor="middle" letter-spacing="1">NNA CERTIFIED</text>
+
+    <!-- QuickBooks Gold -->
+    <rect x="172" y="0" width="200" height="34" rx="0" fill="none" stroke="#b8973e" stroke-width="1" opacity="0.4"/>
+    <text x="272" y="22" font-family="Arial, sans-serif" font-size="13" fill="#888d9a" text-anchor="middle" letter-spacing="1">QB PROADVISOR GOLD</text>
+
+    <!-- FINRA -->
+    <rect x="384" y="0" width="140" height="34" rx="0" fill="none" stroke="#b8973e" stroke-width="1" opacity="0.4"/>
+    <text x="454" y="22" font-family="Arial, sans-serif" font-size="13" fill="#888d9a" text-anchor="middle" letter-spacing="1">FINRA LICENSED</text>
+
+    <!-- E&O -->
+    <rect x="536" y="0" width="160" height="34" rx="0" fill="none" stroke="#b8973e" stroke-width="1" opacity="0.4"/>
+    <text x="616" y="22" font-family="Arial, sans-serif" font-size="13" fill="#888d9a" text-anchor="middle" letter-spacing="1">$100K E&amp;O INSURED</text>
+  </g>
+
+  <!-- URL bottom right -->
+  <text x="1120" y="570" font-family="Arial, sans-serif" font-size="16" fill="#6b707d" text-anchor="end" letter-spacing="1">mcc-solutionsnj.com</text>
+</svg>

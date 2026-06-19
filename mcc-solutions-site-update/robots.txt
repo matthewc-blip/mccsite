@@ -1,0 +1,20 @@
+# robots.txt — MCC Solutions LLC
+# https://mcc-solutionsnj.com
+
+User-agent: *
+Allow: /
+
+# Allow social crawlers to access OG image
+User-agent: Twitterbot
+Allow: /og-image.svg
+
+User-agent: facebookexternalhit
+Allow: /og-image.svg
+
+# Block any admin or private paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+
+# Sitemap location
+Sitemap: https://mcc-solutionsnj.com/sitemap.xml
