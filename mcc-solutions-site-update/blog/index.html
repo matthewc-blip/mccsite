@@ -114,25 +114,57 @@
 </footer>
 
 <script>
-  // Fetches the posts index (built/updated by Decap CMS commits) and renders cards.
-  // No rebuild required: this index.json is just another file in the repo that
-  // updates whenever a post is published through /admin.
+  // CONFIG — update these two values to match your actual GitHub repo
+  const GITHUB_OWNER = "matthewc-blip";
+  const GITHUB_REPO = "mccsite";
+  const GITHUB_BRANCH = "main";
+  const POSTS_PATH = "blog/posts";
+
+  // This reads the blog/posts/ folder DIRECTLY from GitHub via their public API.
+  // No manual index.json to maintain — every file Decap CMS commits to this
+  // folder shows up automatically, the next time someone loads this page.
+  // Uses the raw.githubusercontent.com CDN for actual file contents (fast, free,
+  // no auth needed since this is a public read).
+
   async function loadPosts() {
     const listEl = document.getElementById('postList');
     try {
-      const res = await fetch('/blog/posts/index.json', { cache: 'no-store' });
-      if (!res.ok) throw new Error('No posts index found');
-      const posts = await res.json();
+      // Step 1: list files in the posts folder
+      const dirRes = await fetch(
+        `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${POSTS_PATH}?ref=${GITHUB_BRANCH}`
+      );
+      if (!dirRes.ok) throw new Error('Could not list posts folder');
+      const files = await dirRes.json();
 
-      if (!posts || posts.length === 0) {
+      const jsonFiles = files.filter(f => f.name.endsWith('.json') && f.type === 'file');
+
+      if (jsonFiles.length === 0) {
+        listEl.innerHTML = '<div class="empty-state">First post coming soon.</div>';
+        return;
+      }
+
+      // Step 2: fetch each post's actual content in parallel
+      const posts = await Promise.all(
+        jsonFiles.map(async (file) => {
+          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${POSTS_PATH}/${file.name}`;
+          const res = await fetch(rawUrl, { cache: 'no-store' });
+          if (!res.ok) return null;
+          const data = await res.json();
+          return data;
+        })
+      );
+
+      const validPosts = posts.filter(p => p && p.slug && p.title);
+
+      if (validPosts.length === 0) {
         listEl.innerHTML = '<div class="empty-state">First post coming soon.</div>';
         return;
       }
 
       // Newest first
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      validPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      listEl.innerHTML = posts.map(post => {
+      listEl.innerHTML = validPosts.map(post => {
         const dateStr = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
         return `
           <a class="post-card" href="/blog/post.html?slug=${encodeURIComponent(post.slug)}">
@@ -148,6 +180,7 @@
         `;
       }).join('');
     } catch (err) {
+      console.error(err);
       listEl.innerHTML = '<div class="empty-state">First post coming soon.</div>';
     }
   }
