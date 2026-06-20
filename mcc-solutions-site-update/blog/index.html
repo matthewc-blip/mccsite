@@ -3,39 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog | MCC Solutions LLC | Cranford NJ</title>
-<meta name="description" content="Insights on notary services, bookkeeping, and building a financial services business in Union County, NJ — from MCC Solutions LLC.">
+<title id="pageTitle">Loading… | MCC Solutions Blog</title>
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://mcc-solutionsnj.com/blog/">
+<link rel="canonical" id="canonicalLink" href="https://mcc-solutionsnj.com/blog/">
+<meta name="description" id="metaDesc" content="MCC Solutions LLC blog — notary, bookkeeping, and small business insights from Cranford, NJ.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap"></noscript>
 <style>
   :root {
-    --black: #07080a;
-    --navy: #0b0e14;
-    --navy2: #111520;
-    --navy3: #161b28;
-    --gold: #b8973e;
-    --gold-light: #d4b05a;
-    --gold-pale: rgba(184,151,62,0.12);
-    --white: #f0ede6;
-    --white-dim: rgba(240,237,230,0.85);
-    --muted: #9098a8;
-    --muted-lt: #b0b8c8;
-    --border: rgba(255,255,255,0.06);
-    --border-gold: rgba(184,151,62,0.25);
-    --radius: 4px;
+    --black: #07080a; --navy: #0b0e14; --navy2: #111520; --navy3: #161b28;
+    --gold: #b8973e; --gold-light: #d4b05a; --gold-pale: rgba(184,151,62,0.12);
+    --white: #f0ede6; --white-dim: rgba(240,237,230,0.85);
+    --muted: #9098a8; --muted-lt: #b0b8c8;
+    --border: rgba(255,255,255,0.06); --border-gold: rgba(184,151,62,0.25);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     background: var(--navy); color: var(--white);
-    font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.65;
+    font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.7;
     -webkit-font-smoothing: antialiased; font-weight: 300;
   }
-  h1,h2,h3 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.15; font-weight: 400; letter-spacing: 0.01em; }
+  h1,h2,h3 { font-family: 'Cormorant Garamond', Georgia, serif; line-height: 1.2; font-weight: 400; letter-spacing: 0.01em; }
 
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -54,40 +45,49 @@
   }
   .nav-back:hover { color: var(--gold); }
 
-  .container { max-width: 880px; margin: 0 auto; padding: 8rem 6% 6rem; }
-  .eyebrow {
-    font-size: 0.65rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 1rem;
-  }
-  h1 { font-size: clamp(2.25rem, 5vw, 3.25rem); margin-bottom: 1rem; }
-  .intro { font-size: 0.95rem; color: var(--muted-lt); max-width: 560px; margin-bottom: 3.5rem; line-height: 1.8; }
-
-  .post-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
-  .post-card {
-    display: block; padding: 2rem 0; border-bottom: 1px solid var(--border);
-    text-decoration: none; color: inherit; transition: padding-left .25s;
-  }
-  .post-card:hover { padding-left: 0.5rem; }
+  article { max-width: 700px; margin: 0 auto; padding: 8rem 6% 5rem; }
   .post-meta {
     font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.6rem; display: flex; gap: 0.75rem; align-items: center;
+    color: var(--gold); margin-bottom: 1.25rem; display: flex; gap: 0.75rem; align-items: center;
   }
   .post-meta .dot { color: var(--border-gold); }
   .post-meta .date { color: var(--muted); text-transform: none; letter-spacing: 0.02em; }
-  .post-card h2 {
-    font-size: 1.5rem; color: var(--white); margin-bottom: 0.6rem; transition: color .2s;
+  article h1 { font-size: clamp(2rem, 5vw, 2.85rem); margin-bottom: 2.5rem; }
+  .post-body { font-size: 1rem; color: var(--white-dim); }
+  .post-body p { margin-bottom: 1.4rem; }
+  .post-body h2 {
+    font-size: 1.5rem; color: var(--white); margin: 2.5rem 0 1rem;
+    padding-top: 0.5rem; border-top: 1px solid var(--border);
   }
-  .post-card:hover h2 { color: var(--gold-light); }
-  .post-excerpt { font-size: 0.88rem; color: var(--muted-lt); line-height: 1.75; max-width: 680px; }
-  .post-read-more {
-    display: inline-block; margin-top: 0.85rem; font-size: 0.72rem; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
+  .post-body h2:first-child { border-top: none; padding-top: 0; }
+  .post-body ul, .post-body ol { margin: 0 0 1.4rem 1.25rem; color: var(--white-dim); }
+  .post-body li { margin-bottom: 0.5rem; }
+  .post-body strong { color: var(--white); font-weight: 500; }
+  .post-body em { color: var(--gold-light); font-style: italic; }
+  .post-body hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+  .post-body a { color: var(--gold); text-decoration: none; }
+  .post-body a:hover { color: var(--gold-light); }
+
+  .author-bio {
+    margin-top: 3rem; padding: 1.5rem; border: 1px solid var(--border-gold);
+    background: var(--navy2); font-size: 0.85rem; color: var(--muted-lt); line-height: 1.8;
+  }
+  .author-bio a { color: var(--gold); text-decoration: none; }
+
+  .back-link {
+    display: inline-block; margin-top: 3rem; font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-decoration: none;
   }
 
-  .empty-state { padding: 3rem 0; color: var(--muted); font-size: 0.9rem; text-align: center; }
-  .loading { padding: 3rem 0; color: var(--muted); font-size: 0.85rem; text-align: center; letter-spacing: 0.04em; }
+  .loading { padding: 8rem 6%; text-align: center; color: var(--muted); font-size: 0.85rem; }
+  .debug-box {
+    margin: 8rem 6% 2rem; padding: 1.5rem; background: var(--navy2);
+    border: 1px solid var(--border-gold); font-family: monospace; font-size: 0.75rem;
+    color: var(--muted-lt); white-space: pre-wrap; word-break: break-all; line-height: 1.6;
+  }
+  .debug-box strong { color: var(--gold); }
 
-  footer { border-top: 1px solid var(--border); padding: 1.5rem 6%; text-align: center; background: var(--black); margin-top: 2rem; }
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 6%; text-align: center; background: var(--black); }
   footer p { font-size: 0.72rem; color: var(--muted); margin: 0; }
   footer a { color: var(--gold); text-decoration: none; }
 </style>
@@ -96,95 +96,139 @@
 
 <nav>
   <a href="/" class="nav-logo">MCC <span>Solutions</span></a>
-  <a href="/" class="nav-back">&larr; Back to Site</a>
+  <a href="/blog/" class="nav-back">&larr; All Posts</a>
 </nav>
 
-<div class="container">
-  <div class="eyebrow">Insights</div>
-  <h1>The MCC Solutions Blog</h1>
-  <p class="intro">Notes on notary work, bookkeeping, and building a licensed financial services business in Union County, NJ — written by Matthew Coleman, owner of MCC Solutions LLC.</p>
-
-  <div class="post-list" id="postList">
-    <div class="loading">Loading posts&hellip;</div>
-  </div>
-</div>
+<article id="articleRoot">
+  <div class="loading">Loading post&hellip;</div>
+</article>
 
 <footer>
   <p>&copy; 2026 MCC Solutions LLC &middot; Cranford, NJ &middot; <a href="/">mcc-solutionsnj.com</a></p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 <script>
-  // CONFIG — update these two values to match your actual GitHub repo
+  // GitHub repo config — used as a fallback to find posts even if the exact
+  // slug in the URL doesn't perfectly match a filename (handles case mismatches,
+  // stray characters, etc. that can happen from manual edits).
   const GITHUB_OWNER = "matthewc-blip";
   const GITHUB_REPO = "mccsite";
   const GITHUB_BRANCH = "main";
   const POSTS_PATH = "blog/posts";
 
-  // This reads the blog/posts/ folder DIRECTLY from GitHub via their public API.
-  // No manual index.json to maintain — every file Decap CMS commits to this
-  // folder shows up automatically, the next time someone loads this page.
-  // Uses the raw.githubusercontent.com CDN for actual file contents (fast, free,
-  // no auth needed since this is a public read).
+  function getSlug() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('slug');
+  }
 
-  async function loadPosts() {
-    const listEl = document.getElementById('postList');
+  function showDebug(message, details) {
+    const root = document.getElementById('articleRoot');
+    root.innerHTML = `
+      <div class="debug-box">
+<strong>Post not found — debug info</strong>
+
+${message}
+
+${details}
+
+If you're seeing this, copy this entire box and send it back for help diagnosing.
+      </div>
+      <div style="padding: 0 6% 4rem;"><a href="/blog/" style="color:var(--gold);font-size:0.8rem;">&larr; Back to all posts</a></div>
+    `;
+  }
+
+  async function tryFetch(url) {
     try {
-      // Step 1: list files in the posts folder
-      const dirRes = await fetch(
-        `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${POSTS_PATH}?ref=${GITHUB_BRANCH}`
-      );
-      if (!dirRes.ok) throw new Error('Could not list posts folder');
-      const files = await dirRes.json();
-
-      const jsonFiles = files.filter(f => f.name.endsWith('.json') && f.type === 'file');
-
-      if (jsonFiles.length === 0) {
-        listEl.innerHTML = '<div class="empty-state">First post coming soon.</div>';
-        return;
-      }
-
-      // Step 2: fetch each post's actual content in parallel
-      const posts = await Promise.all(
-        jsonFiles.map(async (file) => {
-          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${POSTS_PATH}/${file.name}`;
-          const res = await fetch(rawUrl, { cache: 'no-store' });
-          if (!res.ok) return null;
-          const data = await res.json();
-          return data;
-        })
-      );
-
-      const validPosts = posts.filter(p => p && p.slug && p.title);
-
-      if (validPosts.length === 0) {
-        listEl.innerHTML = '<div class="empty-state">First post coming soon.</div>';
-        return;
-      }
-
-      // Newest first
-      validPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      listEl.innerHTML = validPosts.map(post => {
-        const dateStr = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-        return `
-          <a class="post-card" href="/blog/post.html?slug=${encodeURIComponent(post.slug)}">
-            <div class="post-meta">
-              <span>${post.category || 'Insights'}</span>
-              <span class="dot">&middot;</span>
-              <span class="date">${dateStr}</span>
-            </div>
-            <h2>${post.title}</h2>
-            <p class="post-excerpt">${post.excerpt || ''}</p>
-            <span class="post-read-more">Read More &rarr;</span>
-          </a>
-        `;
-      }).join('');
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return { ok: false, status: res.status, url };
+      const data = await res.json();
+      return { ok: true, data, url };
     } catch (err) {
-      console.error(err);
-      listEl.innerHTML = '<div class="empty-state">First post coming soon.</div>';
+      return { ok: false, error: err.message, url };
     }
   }
-  loadPosts();
+
+  async function loadPost() {
+    const slug = getSlug();
+    const root = document.getElementById('articleRoot');
+
+    if (!slug) {
+      showDebug(
+        "No 'slug' parameter was found in the URL.",
+        `Current URL: ${window.location.href}\n\nExpected format:\n/blog/post.html?slug=your-post-slug`
+      );
+      return;
+    }
+
+    // Attempt 1: direct, exact-case fetch (fastest, normal path)
+    let attempt = await tryFetch(`/blog/posts/${encodeURIComponent(slug)}.json`);
+
+    // Attempt 2: if that fails, list the actual posts folder from GitHub's API
+    // and find a case-insensitive match — this recovers from capitalization
+    // mismatches between the URL slug and the real filename.
+    let post = null;
+    let debugLog = [`Attempt 1 (direct path /blog/posts/${slug}.json): ${attempt.ok ? 'SUCCESS' : 'FAILED (' + (attempt.status || attempt.error) + ')'}`];
+
+    if (attempt.ok) {
+      post = attempt.data;
+    } else {
+      const dirRes = await tryFetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${POSTS_PATH}?ref=${GITHUB_BRANCH}`);
+      if (dirRes.ok && Array.isArray(dirRes.data)) {
+        const files = dirRes.data.filter(f => f.name.endsWith('.json'));
+        debugLog.push(`Attempt 2: found ${files.length} file(s) in ${POSTS_PATH}: ${files.map(f => f.name).join(', ') || '(none)'}`);
+
+        // case-insensitive match against slug, stripping .json
+        const match = files.find(f => f.name.toLowerCase().replace('.json', '') === slug.toLowerCase());
+
+        if (match) {
+          debugLog.push(`Found case-insensitive match: ${match.name}`);
+          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${POSTS_PATH}/${match.name}`;
+          const rawRes = await tryFetch(rawUrl);
+          if (rawRes.ok) {
+            post = rawRes.data;
+            debugLog.push(`Attempt 3 (raw fetch of matched file): SUCCESS`);
+          } else {
+            debugLog.push(`Attempt 3 (raw fetch of matched file): FAILED (${rawRes.status || rawRes.error})`);
+          }
+        } else {
+          debugLog.push(`No file matched slug "${slug}" (case-insensitive) among the files listed above.`);
+        }
+      } else {
+        debugLog.push(`Attempt 2 (list folder via GitHub API): FAILED (${dirRes.status || dirRes.error})`);
+      }
+    }
+
+    if (!post) {
+      showDebug(
+        `Could not find a post matching slug: "${slug}"`,
+        debugLog.join('\n')
+      );
+      return;
+    }
+
+    document.getElementById('pageTitle').textContent = `${post.title} | MCC Solutions Blog`;
+    document.getElementById('metaDesc').setAttribute('content', post.excerpt || '');
+    document.getElementById('canonicalLink').setAttribute('href', `https://mcc-solutionsnj.com/blog/post.html?slug=${post.slug || slug}`);
+
+    const dateStr = post.date ? new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+    const bodyHtml = (typeof marked !== 'undefined') ? marked.parse(post.body || '') : (post.body || '').replace(/\n/g, '<br>');
+
+    root.innerHTML = `
+      <div class="post-meta">
+        <span>${post.category || 'Insights'}</span>
+        <span class="dot">&middot;</span>
+        <span class="date">${dateStr}</span>
+      </div>
+      <h1>${post.title || 'Untitled'}</h1>
+      <div class="post-body">${bodyHtml || '<p><em>(This post has no body content yet.)</em></p>'}</div>
+      <div class="author-bio">
+        <strong style="color:var(--white);">Matthew Coleman</strong> is the owner of MCC Solutions LLC, a licensed financial services firm in Cranford, NJ offering notary, bookkeeping, and web design services. Learn more at <a href="/">mcc-solutionsnj.com</a>.
+      </div>
+      <a class="back-link" href="/blog/">&larr; Back to All Posts</a>
+    `;
+  }
+  loadPost();
 </script>
 
 </body>
