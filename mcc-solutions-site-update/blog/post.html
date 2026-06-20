@@ -80,6 +80,12 @@
   }
 
   .loading { padding: 8rem 6%; text-align: center; color: var(--muted); font-size: 0.85rem; }
+  .debug-box {
+    margin: 8rem 6% 2rem; padding: 1.5rem; background: var(--navy2);
+    border: 1px solid var(--border-gold); font-family: monospace; font-size: 0.75rem;
+    color: var(--muted-lt); white-space: pre-wrap; word-break: break-all; line-height: 1.6;
+  }
+  .debug-box strong { color: var(--gold); }
 
   footer { border-top: 1px solid var(--border); padding: 1.5rem 6%; text-align: center; background: var(--black); }
   footer p { font-size: 0.72rem; color: var(--muted); margin: 0; }
@@ -103,46 +109,124 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 <script>
+  // GitHub repo config — used as a fallback to find posts even if the exact
+  // slug in the URL doesn't perfectly match a filename (handles case mismatches,
+  // stray characters, etc. that can happen from manual edits).
+  const GITHUB_OWNER = "matthewc-blip";
+  const GITHUB_REPO = "mccsite";
+  const GITHUB_BRANCH = "main";
+  const POSTS_PATH = "blog/posts";
+
   function getSlug() {
     const params = new URLSearchParams(window.location.search);
     return params.get('slug');
   }
 
+  function showDebug(message, details) {
+    const root = document.getElementById('articleRoot');
+    root.innerHTML = `
+      <div class="debug-box">
+<strong>Post not found — debug info</strong>
+
+${message}
+
+${details}
+
+If you're seeing this, copy this entire box and send it back for help diagnosing.
+      </div>
+      <div style="padding: 0 6% 4rem;"><a href="/blog/" style="color:var(--gold);font-size:0.8rem;">&larr; Back to all posts</a></div>
+    `;
+  }
+
+  async function tryFetch(url) {
+    try {
+      const res = await fetch(url, { cache: 'no-store' });
+      if (!res.ok) return { ok: false, status: res.status, url };
+      const data = await res.json();
+      return { ok: true, data, url };
+    } catch (err) {
+      return { ok: false, error: err.message, url };
+    }
+  }
+
   async function loadPost() {
     const slug = getSlug();
     const root = document.getElementById('articleRoot');
+
     if (!slug) {
-      root.innerHTML = '<div class="loading">Post not found. <a href="/blog/" style="color:var(--gold)">Back to all posts</a></div>';
+      showDebug(
+        "No 'slug' parameter was found in the URL.",
+        `Current URL: ${window.location.href}\n\nExpected format:\n/blog/post.html?slug=your-post-slug`
+      );
       return;
     }
-    try {
-      const res = await fetch(`/blog/posts/${encodeURIComponent(slug)}.json`, { cache: 'no-store' });
-      if (!res.ok) throw new Error('Post not found');
-      const post = await res.json();
 
-      document.getElementById('pageTitle').textContent = `${post.title} | MCC Solutions Blog`;
-      document.getElementById('metaDesc').setAttribute('content', post.excerpt || '');
-      document.getElementById('canonicalLink').setAttribute('href', `https://mcc-solutionsnj.com/blog/post.html?slug=${slug}`);
+    // Attempt 1: direct, exact-case fetch (fastest, normal path)
+    let attempt = await tryFetch(`/blog/posts/${encodeURIComponent(slug)}.json`);
 
-      const dateStr = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-      const bodyHtml = (typeof marked !== 'undefined') ? marked.parse(post.body || '') : (post.body || '').replace(/\n/g, '<br>');
+    // Attempt 2: if that fails, list the actual posts folder from GitHub's API
+    // and find a case-insensitive match — this recovers from capitalization
+    // mismatches between the URL slug and the real filename.
+    let post = null;
+    let debugLog = [`Attempt 1 (direct path /blog/posts/${slug}.json): ${attempt.ok ? 'SUCCESS' : 'FAILED (' + (attempt.status || attempt.error) + ')'}`];
 
-      root.innerHTML = `
-        <div class="post-meta">
-          <span>${post.category || 'Insights'}</span>
-          <span class="dot">&middot;</span>
-          <span class="date">${dateStr}</span>
-        </div>
-        <h1>${post.title}</h1>
-        <div class="post-body">${bodyHtml}</div>
-        <div class="author-bio">
-          <strong style="color:var(--white);">Matthew Coleman</strong> is the owner of MCC Solutions LLC, a licensed financial services firm in Cranford, NJ offering notary, bookkeeping, and web design services. Learn more at <a href="/">mcc-solutionsnj.com</a>.
-        </div>
-        <a class="back-link" href="/blog/">&larr; Back to All Posts</a>
-      `;
-    } catch (err) {
-      root.innerHTML = '<div class="loading">Post not found. <a href="/blog/" style="color:var(--gold)">Back to all posts</a></div>';
+    if (attempt.ok) {
+      post = attempt.data;
+    } else {
+      const dirRes = await tryFetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${POSTS_PATH}?ref=${GITHUB_BRANCH}`);
+      if (dirRes.ok && Array.isArray(dirRes.data)) {
+        const files = dirRes.data.filter(f => f.name.endsWith('.json'));
+        debugLog.push(`Attempt 2: found ${files.length} file(s) in ${POSTS_PATH}: ${files.map(f => f.name).join(', ') || '(none)'}`);
+
+        // case-insensitive match against slug, stripping .json
+        const match = files.find(f => f.name.toLowerCase().replace('.json', '') === slug.toLowerCase());
+
+        if (match) {
+          debugLog.push(`Found case-insensitive match: ${match.name}`);
+          const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}/${POSTS_PATH}/${match.name}`;
+          const rawRes = await tryFetch(rawUrl);
+          if (rawRes.ok) {
+            post = rawRes.data;
+            debugLog.push(`Attempt 3 (raw fetch of matched file): SUCCESS`);
+          } else {
+            debugLog.push(`Attempt 3 (raw fetch of matched file): FAILED (${rawRes.status || rawRes.error})`);
+          }
+        } else {
+          debugLog.push(`No file matched slug "${slug}" (case-insensitive) among the files listed above.`);
+        }
+      } else {
+        debugLog.push(`Attempt 2 (list folder via GitHub API): FAILED (${dirRes.status || dirRes.error})`);
+      }
     }
+
+    if (!post) {
+      showDebug(
+        `Could not find a post matching slug: "${slug}"`,
+        debugLog.join('\n')
+      );
+      return;
+    }
+
+    document.getElementById('pageTitle').textContent = `${post.title} | MCC Solutions Blog`;
+    document.getElementById('metaDesc').setAttribute('content', post.excerpt || '');
+    document.getElementById('canonicalLink').setAttribute('href', `https://mcc-solutionsnj.com/blog/post.html?slug=${post.slug || slug}`);
+
+    const dateStr = post.date ? new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '';
+    const bodyHtml = (typeof marked !== 'undefined') ? marked.parse(post.body || '') : (post.body || '').replace(/\n/g, '<br>');
+
+    root.innerHTML = `
+      <div class="post-meta">
+        <span>${post.category || 'Insights'}</span>
+        <span class="dot">&middot;</span>
+        <span class="date">${dateStr}</span>
+      </div>
+      <h1>${post.title || 'Untitled'}</h1>
+      <div class="post-body">${bodyHtml || '<p><em>(This post has no body content yet.)</em></p>'}</div>
+      <div class="author-bio">
+        <strong style="color:var(--white);">Matthew Coleman</strong> is the owner of MCC Solutions LLC, a licensed financial services firm in Cranford, NJ offering notary, bookkeeping, and web design services. Learn more at <a href="/">mcc-solutionsnj.com</a>.
+      </div>
+      <a class="back-link" href="/blog/">&larr; Back to All Posts</a>
+    `;
   }
   loadPost();
 </script>
