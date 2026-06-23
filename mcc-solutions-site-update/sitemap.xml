@@ -66,5 +66,26 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Blog posts -->
+  <url>
+    <loc>https://mcc-solutionsnj.com/blog/i-just-got-a-micro-internship-with-united-talent-agency-heres-how-it-actually-went</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mcc-solutionsnj.com/blog/i-work-a-manual-labor-job-at-lowes-during-the-day-and-build-for-fortune-500-companies-at-night-heres-how</loc>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mcc-solutionsnj.com/blog/why-i-started-a-business-in-2026</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+ 
 
 </urlset>
