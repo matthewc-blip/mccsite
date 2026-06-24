@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "mccsite",
+  "compatibility_date": "2026-06-23",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "mcc-solutions-site-update"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
