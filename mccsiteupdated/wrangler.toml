@@ -1,7 +1,0 @@
-name = "mccsite"
-compatibility_date = "2026-06-23"
-
-[assets]
-directory = "./mcc-solutions-site-update"
-not_found_handling = "404-page"
-html_handling = "auto-trailing-slash"
