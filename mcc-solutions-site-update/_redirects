@@ -7,7 +7,6 @@
 # www.mcc-solutionsnj.com to be added as a Custom Domain on this Pages
 # project (Cloudflare Pages > your project > Custom domains) — a
 # redirect rule can only fire for traffic that actually reaches Pages.
-https://www.mcc-solutionsnj.com/*  https://mcc-solutionsnj.com/:splat  301!
 
 # ── Index-page canonicalization ─────────────────────────────────────
 # Without this, "/" and "/index.html" (and a hypothetical "/index.php")
