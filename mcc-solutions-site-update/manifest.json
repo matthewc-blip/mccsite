@@ -1,0 +1,29 @@
+{
+  "name": "MCC Solutions LLC",
+  "short_name": "MCC Solutions",
+  "description": "Mobile Notary, Bookkeeping & Web Design — Cranford, NJ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#0b0e14",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0iIzBiMGUxNCIvPjxyZWN0IHg9Ijk0IiB5PSIzNiIgd2lkdGg9IjQiIGhlaWdodD0iMTIwIiBmaWxsPSIjYjg5NzNlIi8+PHJlY3QgeD0iNjAiIHk9IjE1NiIgd2lkdGg9IjcyIiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjYjg5NzNlIi8+PHJlY3QgeD0iMzYiIHk9IjYwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYiIHJ4PSIzIiBmaWxsPSIjYjg5NzNlIi8+PGxpbmUgeDE9IjQ4IiB5MT0iNjYiIHgyPSI0OCIgeTI9Ijk2IiBzdHJva2U9IiNiODk3M2UiIHN0cm9rZS13aWR0aD0iNSIvPjxsaW5lIHgxPSIxNDQiIHkxPSI2NiIgeDI9IjE0NCIgeTI9Ijk2IiBzdHJva2U9IiNiODk3M2UiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Ik0zMCA5NiBRNDggMTE0IDY2IDk2IiBzdHJva2U9IiNiODk3M2UiIHN0cm9rZS13aWR0aD0iNSIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xMjYgOTYgUTE0NCAxMTQgMTYyIDk2IiBzdHJva2U9IiNiODk3M2UiIHN0cm9rZS13aWR0aD0iNSIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9Ijk2IiBjeT0iNTciIHI9IjgiIGZpbGw9IiNiODk3M2UiLz48L3N2Zz4=",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgZmlsbD0iIzBiMGUxNCIvPjxyZWN0IHg9IjI1MCIgeT0iODAiIHdpZHRoPSIxMiIgaGVpZ2h0PSIzMjAiIGZpbGw9IiNiODk3M2UiLz48cmVjdCB4PSIxNjAiIHk9IjQxNiIgd2lkdGg9IjE5MiIgaGVpZ2h0PSIyMCIgcng9IjEwIiBmaWxsPSIjYjg5NzNlIi8+PHJlY3QgeD0iOTYiIHk9IjE2MCIgd2lkdGg9IjMyMCIgaGVpZ2h0PSIxNiIgcng9IjgiIGZpbGw9IiNiODk3M2UiLz48bGluZSB4MT0iMTI4IiB5MT0iMTc2IiB4Mj0iMTI4IiB5Mj0iMjU2IiBzdHJva2U9IiNiODk3M2UiIHN0cm9rZS13aWR0aD0iMTIiLz48bGluZSB4MT0iMzg0IiB5MT0iMTc2IiB4Mj0iMzg0IiB5Mj0iMjU2IiBzdHJva2U9IiNiODk3M2UiIHN0cm9rZS13aWR0aD0iMTIiLz48cGF0aCBkPSJNODAgMjU2IFExMjggMzA0IDE3NiAyNTYiIHN0cm9rZT0iI2I4OTczZSIgc3Ryb2tlLXdpZHRoPSIxMiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0zMzYgMjU2IFEzODQgMzA0IDQzMiAyNTYiIHN0cm9rZT0iI2I4OTczZSIgc3Ryb2tlLXdpZHRoPSIxMiIgZmlsbD0ibm9uZSIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjE1MiIgcj0iMjAiIGZpbGw9IiNiODk3M2UiLz48L3N2Zz4=",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "finance", "productivity"],
+  "lang": "en-US",
+  "scope": "/",
+  "related_applications": [],
+  "prefer_related_applications": false
+}
