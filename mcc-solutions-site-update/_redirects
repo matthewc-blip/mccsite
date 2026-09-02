@@ -1,0 +1,13 @@
+# Cloudflare Pages redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+#
+# NOTE: www -> apex host redirect is handled via a Cloudflare Redirect Rule
+# in the dashboard instead of here — Workers Static Assets only allows
+# relative URLs in _redirects, not absolute cross-host URLs.
+
+# ── Index-page canonicalization ─────────────────────────────────────
+# Without this, "/" and "/index.html" (and a hypothetical "/index.php")
+# serve identical content as two separate 200 URLs — flagged as a
+# duplicate/"accessible index page" issue by SEO auditors.
+/index.html  /  301
+/index.php   /  301
